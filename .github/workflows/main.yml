@@ -5,17 +5,14 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v1
-      - run: docker build -t appliance-build:latest docker
-      - run: ./scripts/docker-run.sh gradle ansibleCheck
+      - run: ./gradlew ansibleCheck
   check-shellcheck:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v1
-      - run: docker build -t appliance-build:latest docker
-      - run: ./scripts/docker-run.sh gradle shellCheck
+      - run: ./gradlew shellCheck
   check-shfmt:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v1
-      - run: docker build -t appliance-build:latest docker
-      - run: ./scripts/docker-run.sh gradle shfmtCheck
+      - run: ./gradlew shfmtCheck
