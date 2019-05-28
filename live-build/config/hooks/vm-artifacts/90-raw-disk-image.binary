@@ -200,7 +200,7 @@ rsync --info=stats3 -Wa binary/* "$DIRECTORY/"
 # that rootfs dataset.
 #
 cat <<-EOF >"$DIRECTORY/etc/fstab"
-	rpool/ROOT/$FSNAME/home /export/home zfs defaults 0 0
+	#rpool/ROOT/$FSNAME/home /export/home zfs defaults 0 0
 	rpool/ROOT/$FSNAME/data /var/delphix zfs defaults 0 0
 	rpool/ROOT/$FSNAME/log  /var/log     zfs defaults 0 0
 EOF
