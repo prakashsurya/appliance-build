@@ -16,7 +16,9 @@
 
 ---
 - apt:
-    name: delphix-virtualization
+    name:
+      - delphix-upgrade-verification
+      - delphix-virtualization
     state: present
 
 - file:

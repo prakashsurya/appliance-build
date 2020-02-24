@@ -145,7 +145,7 @@ report_progress 10 "Started application upgrade verification"
 JAVA_PARAMETERS=(
 	"-Dlog.dir=/var/delphix/server/upgrade-verify"
 	"-Dmdsverify=true"
-	"-jar" "/opt/delphix/server/lib/exec/upgrade-verify/upgrade-verify.jar"
+	"-jar" "/opt/delphix-upgrade-verification/upgrade-verify.jar"
 )
 
 if [[ -n "$DLPX_DEBUG" ]] && $DLPX_DEBUG; then

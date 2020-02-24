@@ -175,6 +175,16 @@ AWS_S3_URI_MASKING=$(resolve_s3_uri \
 	"$AWS_S3_PREFIX_MASKING" \
 	"dms-core-gate/${UPSTREAM_BRANCH}/build-package/post-push/latest")
 
+#
+# Note, we always pull from the "master" build of the verification
+# package, no matter what the UPSTREAM_BRANCH of the appliance is that
+# we're building; this is intentional.
+#
+AWS_S3_URI_UPGRADE_VERIFICATION=$(resolve_s3_uri \
+	"$AWS_S3_URI_UPGRADE_VERIFICATION" \
+	"$AWS_S3_PREFIX_UPGRADE_VERIFICATION" \
+	"delphix-upgrade-verification/master/build-package/post-push/latest")
+
 AWS_S3_URI_USERLAND_PKGS=$(resolve_s3_uri \
 	"$AWS_S3_URI_USERLAND_PKGS" \
 	"$AWS_S3_PREFIX_USERLAND_PKGS" \
@@ -199,6 +209,7 @@ PKG_DIRECTORY=$(mktemp -d -p "$TOP/build" tmp.pkgs.XXXXXXXXXX)
 #
 download_delphix_s3_debs "$PKG_DIRECTORY" "$AWS_S3_URI_VIRTUALIZATION"
 download_delphix_s3_debs "$PKG_DIRECTORY" "$AWS_S3_URI_MASKING"
+download_delphix_s3_debs "$PKG_DIRECTORY" "$AWS_S3_URI_UPGRADE_VERIFICATION"
 download_delphix_s3_debs "$PKG_DIRECTORY" "$AWS_S3_URI_USERLAND_PKGS"
 download_delphix_s3_debs "$PKG_DIRECTORY" "$AWS_S3_URI_KERNEL_PKGS"
 
